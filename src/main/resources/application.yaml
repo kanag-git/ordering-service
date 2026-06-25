@@ -5,7 +5,15 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-#          issuer-uri: http://localhost:8080/realms/myrealm #Auth server
+          issuer-uri: http://localhost:9000 #Auth server
+  kafka:
+    producer:
+      properties:
+        partitioner.class: org.apache.kafka.clients.producer.RoundRobinPartitioner
+        sticky.partitioning.linger.ms: 0
+        batch.size: 1
+        linger.ms: 0
+
 server:
   port: 8081
 
